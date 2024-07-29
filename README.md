@@ -42,11 +42,11 @@ http://localhost:3000
 
 ## Authentication
 
-Authentication is done entirely using JWT with the **Request-Access token model**. 
+Authentication is done entirely using JWT with the **Refresh-Access token model**. 
 
 When a new user sign-up user details are stored in the database. **Password is hashed with bcrypt before storing for added security.** 
 
-Request token is also generated upon sign-up and ,
+Refresh token is also generated upon sign-up and ,
 1. Gets stored in the dB
 2. Stored as a http only cookie on user browser.
 
@@ -104,6 +104,8 @@ password:12345
 I mistakenly had two separate git, for client and api. So I also uploaded them separately to GitHub so you can see the commit history using GitHub.
 
 [client](https://github.com/tharusha-dev/csa-frontend/)
+
+
 [api](https://github.com/tharusha-dev/csa-backend/)
 
 

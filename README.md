@@ -16,7 +16,12 @@
     pip install 'urllib3<2'
 ```
 
-4. Finally run this command from the project root (parent of api and client)
+5. Fix : Make sure all other docker docker-compose is down
+```
+    docker-compose down
+````
+
+7. Finally run this command from the project root (parent of api and client)
 ```
     docker-compose up --build
 ```

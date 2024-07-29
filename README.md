@@ -35,6 +35,8 @@ http://localhost:3000
 
 (The backend is accessible via http://localhost:5000)
 
+[wait-for-it.sh](https://github.com/vishnubob/wait-for-it/) was used to fix some issues with docker compose, where api was doing requests before db was done setting up. 
+
 
 ## How it works
 
@@ -90,15 +92,20 @@ The docker setup will also add some dummy data to the db as well. I used one of 
 Admin user :
 
 Email : admin@csa.com
-
 Password: 12345
+
+Regular user:
+
+Email : tharusha@csa.com
+password:12345
 
 ## P.S.
 
 I mistakenly had two separate git, for client and api. So I also uploaded them separately to GitHub so you can see the commit history using GitHub.
 
-Client 
-API 
+[client](https://github.com/tharusha-dev/csa-frontend/)
+[api](https://github.com/tharusha-dev/csa-backend/)
+
 
 
 Secret keys for JWT are hardcoded and obviously needs to be more secure than "mySecretKey" in a production version. 
@@ -109,4 +116,4 @@ Secret keys for JWT are hardcoded and obviously needs to be more secure than "my
 2. Social login : Google and facebook etc login should be implemented.
 3. Delivery location tracking/notification : When the package is in delivering status, users should see a live map of the delivery driver during the delivery. This can be enhanced with notification when package is near, and when package arrived
 4. Payments : Need to implement a payment gateway and a way to estimate payments for shipping as well.
-5. Customer service : A way for users to contact the service if something goes wrong or something needs changin. This is vital for a good user experiance. 
+5. Customer service : A way for users to contact the service if something goes wrong or something needs changing. This is vital for a good user experience. 

@@ -19,6 +19,12 @@
 
     docker-compose up --build
 
+You'll know when docekr compose is done when you see this message.
+
+    client_1  | webpack compiled with 1 warning
+    client_1  | No issues found.
+
+
 *Please note that docker downloads arround 200MB of images, and the full process downloading images, verifying and building can take upto 10 mins. If this is inconvinient please drop me a email (tharushamjayasooriya@gmail.com) I can send manual intructions as well.*
 
 That should be it,
@@ -97,3 +103,9 @@ API
 Secret keys for JWT are hardcoded and obviously needs to be more secure than "mySecretKey" in a production version. 
 
 
+## User stories
+1. Users should be able to send packages between themselves without entering the address and name all the time. A user should be able to use another users username and send a package to them.
+2. Social login : Google and facebook etc login should be implemented.
+3. Delivery location tracking/notification : When the package is in delivering status, users should see a live map of the delivery driver during the delivery. This can be enhanced with notification when package is near, and when package arrived
+4. Payments : Need to implement a payment gateway and a way to estimate payments for shipping as well.
+5. Customer service : A way for users to contact the service if something goes wrong or something needs changin. This is vital for a good user experiance. 

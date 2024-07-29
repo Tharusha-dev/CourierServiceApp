@@ -10,15 +10,16 @@
 	Follow this [link](https://docs.docker.com/compose/install/) for a guide.
 
 4. Run the following commands (some bugs with docker needs certain package versions)
-
+```
     pip uninstall requests
     pip install requests=2.31.0
     pip install 'urllib3<2'
+```
 
 4. Finally run this command from the project root (parent of api and client)
-
+```
     docker-compose up --build
-
+```
 You'll know when docekr compose is done when you see this message.
 
     client_1  | webpack compiled with 1 warning

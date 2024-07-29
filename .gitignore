@@ -1,0 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+client/node_modules
+client/.pnp
+client.pnp.js
+
+# testing
+client/coverage
+
+# production
+client/build
+
+
+# Dependencies
+api/node_modules
+api/.pnp
+api.pnp.js
+
+# Production build
+api/build
+api/dist
+
+# Prisma
+api/prisma/*.db
+api/prisma/migrations
+
+
+
+# OS generated files
+api/.DS_Store
+api/Thumbs.db
+
+# TypeScript
+api/*.tsbuildinfo
+
+# Temporary files
+api/*.log
+api/*.tmp
+api/*.temp
+

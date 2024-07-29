@@ -9,19 +9,19 @@
 2. Make sure docker and docker compose is installed and docker service is running 
 	Follow this [link](https://docs.docker.com/compose/install/) for a guide.
 
-4. Run the following commands (some bugs with docker needs certain package versions)
+3. Run the following commands (some bugs with docker needs certain package versions)
 ```
     pip uninstall requests
     pip install requests=2.31.0
     pip install 'urllib3<2'
 ```
 
-5. Fix : Make sure all other docker docker-compose is down
+4. Fix : Make sure all other docker docker-compose is down
 ```
     docker-compose down
 ````
 
-7. Finally run this command from the project root (parent of api and client)
+5. Finally run this command from the project root (parent of api and client)
 ```
     docker-compose up --build
 ```
@@ -41,6 +41,17 @@ http://localhost:3000
 (The backend is accessible via http://localhost:5000)
 
 [wait-for-it.sh](https://github.com/vishnubob/wait-for-it/) was used to fix some issues with docker compose, where api was doing requests before db was done setting up. 
+
+
+## Commits
+
+
+I mistakenly had two separate git, for client and api. So I also uploaded them separately to GitHub so you can see the commit history using GitHub.
+
+[client](https://github.com/tharusha-dev/csa-frontend/)
+
+
+[api](https://github.com/tharusha-dev/csa-backend/)
 
 
 ## How it works
@@ -105,15 +116,6 @@ Email : tharusha@csa.com
 password:12345
 
 ## P.S.
-
-I mistakenly had two separate git, for client and api. So I also uploaded them separately to GitHub so you can see the commit history using GitHub.
-
-[client](https://github.com/tharusha-dev/csa-frontend/)
-
-
-[api](https://github.com/tharusha-dev/csa-backend/)
-
-
 
 Secret keys for JWT are hardcoded and obviously needs to be more secure than "mySecretKey" in a production version. 
 

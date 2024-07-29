@@ -26,7 +26,7 @@ You'll know when docekr compose is done when you see this message.
     client_1  | No issues found.
 
 
-*Please note that docker downloads arround 200MB of images, and the full process downloading images, verifying and building can take upto 10 mins. If this is inconvinient please drop me a email (tharushamjayasooriya@gmail.com) I can send manual intructions as well.*
+*Please note that docker downloads arround 100MB of images, and the full process downloading images, verifying and building can take 5-10 mins. If this is inconvinient please drop me a email (tharushamjayasooriya@gmail.com) I can send manual intructions as well.*
 
 That should be it,
 

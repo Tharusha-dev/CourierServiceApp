@@ -1,6 +1,6 @@
 import express from 'express'
 import jwt from 'jsonwebtoken'
-import { generateAccessToken, generateRefreshToken } from './utils/utils'
+import { generateAccessToken, generateRefreshToken,isValidEmail,isValidPassword } from './utils/utils'
 import { verify } from './auth/auth'
 import { prisma } from './db/prisma'
 import { User } from '@prisma/client'
@@ -239,6 +239,8 @@ app.post("/api/change-address", verify, async (req, res) => {
 app.post("/api/signup", async (req, res) => {
   const { firstName, lastName, username, password, address } = req.body;
 
+  if(isValidEmail(username) || isValidPassword(password)){
+
   // Generate a salt
   const salt = await bcrypt.genSalt(10);
 
@@ -271,6 +273,12 @@ app.post("/api/signup", async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
+  }else {
+    res.status(400).json("Invalid email or password")
+  }
+
+
+
 
 
 })

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import bcrypt from 'bcryptjs'
 // import api from '../axios'
 import { useApi } from '../useApi'
+import PasswordChecklist from "react-password-checklist"
 
 import "../pages/signupPage.css"
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +10,12 @@ import { useNavigate } from 'react-router-dom'
 export default function SignupPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordAgain, setPasswordAgain] = useState("")
+    const [isPasswordValid, setIsPasswordValid] = useState(false)
+    const [isEmailValid, setIsEmailValid] = useState(false)
+
+
+
     const [fname, setFname] = useState("")
     const [lname, setLname] = useState("")
     const [addrs, setAddrs] = useState("")
@@ -23,12 +30,12 @@ export default function SignupPage() {
         async function verifyUser() {
             await api.post("/verify", {},
                 {
-                  
+
                 }
-    
+
             ).then((res) => {
-    
-    
+
+
                 if (res.status === 200) {
                     navigate("/dashboard")
                 }
@@ -37,16 +44,21 @@ export default function SignupPage() {
                     navigate("/signup")
                 }
             })
-    
+
         }
-    
+
         verifyUser()
-    
-    
+
+
     }, [])
 
+    function validateEmail(email: string):boolean {
+        let emailPattern = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+        return emailPattern.test(email)
+    }
 
-    async function submitDetails(firstName: string, lastName: string, email: string, password: string, address:string) {
+
+    async function submitDetails(firstName: string, lastName: string, email: string, password: string, address: string) {
 
 
 
@@ -55,7 +67,7 @@ export default function SignupPage() {
             "lastName": lastName,
             "username": email,
             "password": password,
-            "address":address
+            "address": address
         }).then((res) => {
             setResponse(res.data)
 
@@ -90,6 +102,7 @@ export default function SignupPage() {
 
                 <span className="field-name">Email (username): </span>
                 <input onChange={(e) => {
+                    setIsEmailValid(validateEmail(e.target.value))
                     setEmail(e.target.value)
                 }} type="text" name="" id="" className="field-input" />
                 <span className="field-name">Password : </span>
@@ -97,13 +110,38 @@ export default function SignupPage() {
                     setPassword(e.target.value)
                 }} type="password" name="" id="" className="field-input" />
 
+                <span className="field-name">Type password again : </span>
+                <input onChange={(e) => {
+                    setPasswordAgain(e.target.value)
+                }} type="password" name="" id="" className="field-input" />
+                {!isEmailValid ? <span style={{marginTop:"5%"}} className='email-validation-response'>Email not valid</span> : <></>}
+
+
+                <PasswordChecklist
+                    style={{ marginTop: "6%" }}
+                    rules={["minLength", "specialChar", "number", "capital", "match"]}
+                    minLength={5}
+                    value={password}
+                    valueAgain={passwordAgain}
+                    onChange={(isValid) => {
+                        setIsPasswordValid(isValid)
+
+                    }}
+                />
+
+
+
                 <button onClick={(e) => {
-                    submitDetails(fname, lname, email, password,addrs)
-                }} className="signup-submit-button">
+                    if (isPasswordValid && isEmailValid) {
+                        submitDetails(fname, lname, email, password, addrs)
+                    } else {
+                        console.log("Password in invalid")
+                    }
+                }} className={`signup-submit-button ${isPasswordValid  && isEmailValid? "btn-unlocked" : ""}`}>
                     Sign Up
                 </button>
 
-                <span style={{marginTop:"10%"}} onClick={()=>{navigate("/login")}}> Already a user ? Log in here. </span>
+                <span style={{ marginTop: "10%" }} onClick={() => { navigate("/login") }}> Already a user ? Log in here. </span>
             </div>
 
             {response != "" ? <span>{response}</span> : ""}

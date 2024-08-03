@@ -31,8 +31,7 @@ You'll know when docekr compose is done when you see this message.
     client_1  | No issues found.
 
 
-*Please note that docker downloads arround 100MB of images, and the full process downloading images, verifying and building can take 5-10 mins. If this is inconvinient please drop me a email (tharushamjayasooriya@gmail.com) I can send manual intructions as well.*
-
+*Please note that docker downloads arround 100MB of images, and the full process downloading images, verifying and building can take 5-10 mins. 
 That should be it,
 
 After that, the frontend should be accessible on 
@@ -41,18 +40,6 @@ http://localhost:3000
 (The backend is accessible via http://localhost:5000)
 
 [wait-for-it.sh](https://github.com/vishnubob/wait-for-it/) was used to fix some issues with docker compose, where api was doing requests before db was done setting up. 
-
-
-## Commits
-
-
-I mistakenly had two separate git, for client and api. So I also uploaded them separately to GitHub so you can see the commit history using GitHub.
-
-[client](https://github.com/tharusha-dev/csa-frontend/)
-
-
-[api](https://github.com/tharusha-dev/csa-backend/)
-
 
 ## How it works
 
@@ -103,7 +90,7 @@ I decided to use Prisma ORM because,
 
 ## Users
 
-The docker setup will also add some dummy data to the db as well. I used one of my [previous projects](https://github.com/Tharusha-dev/GoProfileFromSeed/tree/main/data/by_region/LK) for the data. All users I made have a made up email domain called csa (courier service app). The admin user have a bunch of shipments as well, so its a good place to start.
+The docker setup will also add some dummy data to the db as well. I used one of my [previous projects](https://github.com/Tharusha-dev/GoProfileFromSeed/tree/main/data/by_region/LK) for the data. All users I made have a made up email domain called csa (courier service app). The admin user have a bunch of shipments as well, so its a good place to start. Only admin users will see a "Admin panel" button on their dashboard.
 
 Admin user :
 
@@ -118,11 +105,3 @@ password:12345
 ## P.S.
 
 Secret keys for JWT are hardcoded and obviously needs to be more secure than "mySecretKey" in a production version. 
-
-
-## User stories
-1. Users should be able to send packages between themselves without entering the address and name all the time. A user should be able to use another users username and send a package to them.
-2. Social login : Google and facebook etc login should be implemented.
-3. Delivery location tracking/notification : When the package is in delivering status, users should see a live map of the delivery driver during the delivery. This can be enhanced with notification when package is near, and when package arrived
-4. Payments : Need to implement a payment gateway and a way to estimate payments for shipping as well.
-5. Customer service : A way for users to contact the service if something goes wrong or something needs changing. This is vital for a good user experience. 
